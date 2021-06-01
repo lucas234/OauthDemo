@@ -1,11 +1,11 @@
-#### :monkey: SSO demo
+#### :monkey:  Oauth Demo
 ![](https://img.shields.io/badge/Python-3.8-green.svg)   ![](https://img.shields.io/badge/requests-2.25.1-blue.svg) 
 
 |Author|:sunglasses:lucas234:sunglasses:|
 |---|---|
 |Email|:hearts:ly_liubo@163.com:hearts:|
 
-#### :monkey: 概述
+#### :monkey:  概述
 基于[JustAuth](https://github.com/justauth/JustAuth), 简单写了一个python版本的，目前只集成了三个平台
 
 #### :monkey: 集成平台
@@ -13,7 +13,7 @@
 - Gitee([参考文档](https://gitee.com/api/v5/oauth_doc#/))
 - QQ([参考文档](https://wiki.connect.qq.com/))
 
-#### :monkey: 快速应用
+#### :monkey:  快速应用
 安装依赖文件：
 
 `pip install -r requirements.txt`
@@ -23,9 +23,10 @@
 `python app.py`
 
 浏览器打开`http://localhost:5000/` 即可
+
 ![](static/demo.png)
 
-#### :monkey: 扩展
+#### :monkey:  扩展
 
 如果想添加平台，只需在`request`文件夹下添加对应的平台类:
 ```python
