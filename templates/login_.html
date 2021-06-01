@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="../static/icon3.png">
+    <title>SSO demo</title>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdn.staticfile.org/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+<style>
+
+.btn-login {
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #3B78DD;
+    width: 245px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.register {
+    color:gray;
+    border: 1px solid #d1d5da;
+    border-radius: 4px;
+    background: #ebedef;
+    width: 245px;
+    height: 30px;
+    font-size: 14px;
+    line-height:35px;
+    margin-top:8px;
+}
+
+.inputbox{
+    width: 245px;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 15px;
+    border-color: #DADADA;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    cursor: text;
+}
+
+.icon{
+    font-size:18px
+}
+
+input {
+    border:none;
+    background: #fff;
+    height: 30px;
+    font-size: 15px;
+    margin-top:5px;
+    margin-right:5px;
+    margin-bottom:5px;
+}
+
+input:focus{
+    border:none;
+    outline:none;
+}
+
+.login-form{
+    width: 340px;
+    height: 370px;
+    border: 1px solid #dfe8ec;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    align:center;
+<!--    居中显示-->;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.title{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: gray;
+}
+
+.platform {
+    display: inline-block;
+    margin-right:25px;
+}
+
+.remember-me{
+    display: inline-block;
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+
+#rememberme{
+    width: 15px;
+    height: 15px;
+    vertical-align:middle;
+<!--    border: 1px solid red;-->
+<!--    border-radius: 10px;-->
+}
+
+#rememberme-text{
+    vertical-align:middle;
+    font-size:14px;
+    color: gray;
+}
+
+#forget{
+    color: #3B78DD;
+    font-size: 14px;
+    margin-left:110px;
+    vertical-align:middle;
+}
+
+#register-text{
+    color: #3B78DD;
+    font-size: 14px;
+}
+
+a{text-decoration:none}
+
+.more{
+    float:right;
+    height:30px;
+    width:30px;
+    background:#8daec6;
+    border-radius: 50%;
+    line-height: 32px;
+    color: #fff;
+    margin-bottom: 2px;
+    margin-right:-30px;
+    display: inline-block;
+<!--    border: 1px solid #8daec6;-->
+<!--    text-align: center;-->
+<!--    vertical-align: top;-->
+}
+
+.oauth-other-list:before {
+    position: absolute;
+    content: '';
+    width: 0.75em;
+    height: 0.75em;
+    -webkit-transform: rotate(315deg);
+    transform: rotate(315deg);
+    -webkit-box-shadow: 1px 1px 0px 0px #b3b3b3;
+    box-shadow: 1px 1px 0px 0px #b3b3b3;
+
+    margin-left: 113px;
+    margin-top: 1.11em;
+<!--    margin-top: 2.11em;-->
+
+}
+
+.oauth-other-list {
+    display: none;
+    position:fixed;
+    border: 1px solid #cccccc;
+    max-width: 250px;
+    width: 240px;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    margin-left: -248px;
+    border-radius: 0.2857rem;
+    -webkit-box-shadow: 0px 2px 4px rgb(0 0 0 / 10%);
+
+    margin-top: -15px;
+<!--    margin-top: -30px;-->
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.oauth-other-list > a{
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+.oauth-other-list::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#more:hover .oauth-other-list{
+    display:inline-block;
+}
+
+</style>
+<body>
+<div class="login-form" align="center">
+    <h3 class="login-title">登录</h3>
+    <div class="u-login">
+        <div id="username" class="inputbox">
+            <i class="icon ion-ios-person-outline"></i>
+            <input class="username" placeholder="请输入用户名或者邮箱"><br>
+        </div>
+        <div id="password" class="inputbox">
+            <i class="icon ion-ios-locked-outline"></i>
+            <input class="password" placeholder="请输入密码" type="password">
+        </div>
+        <div class="remember-me">
+            <label>
+                <input type="checkbox" id="rememberme"/>
+                <sapn id="rememberme-text">记住我</sapn>
+            </label>
+            <a href="" id="forget">忘记密码?</a>
+        </div>
+        <div>
+            <button class="btn-login">登录</button>
+        </div>
+    </div>
+    <div class="register">
+        没有账户？<a href="" id="register-text">立即注册.</a>
+    </div>
+    <div class="sso login">
+        <div class="sso title">第三方登录</div>
+        <div class="platforms">
+            <div class="platform">
+                <a title="Gitee" href="http://localhost:5000/oauth/render/gitee">
+                    <img src="../static/gitee.png">
+                </a>
+            </div>
+            <div class="platform">
+                <a title="Github" href="http://localhost:5000/oauth/render/github">
+                    <img src="../static/github.png">
+                </a>
+            </div>
+            <div class="platform">
+                <a title="QQ" href="http://localhost:5000/oauth/render/qq">
+                    <img src="../static/qq.png">
+                </a>
+            </div>
+            <div id="more" class="platform">
+                <div class="more">
+                    <i class="icon ion-more"></i>
+                </div>
+                <div class="oauth-other-list">
+                        <a title="微信" href="http://localhost:5000/oauth/render/wechat">
+                            <img src="../static/wechat.png">
+                        </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script>
+    // 聚焦添加蓝色边框
+    $("input.username").focus(function(){
+        $("#username").css("border","solid 1px #3B78DD");  });
+    $("input.password").focus(function(){
+        $("#password").css("border","solid 1px #3B78DD");  });
+    // 失去聚焦恢复默认边框
+    $("input").blur(function(){
+        $(".inputbox").css("border-color","#DADADA");    });
+    // 复选框
+    var rememberMe = $('#rememberme').is(':checked');
+    <!--alert(rememberMe);-->
+    // other oauth 显示出来
+<!--    $("#more").hover(-->
+<!--        function(){$(".oauth-other-list").css("display","inline-block");},-->
+<!--        function(){setTimeout(function(){$(".oauth-other-list").css("display","none");},1000)}-->
+<!--    );-->
+</script>
+</html>
